@@ -1,0 +1,52 @@
+Install STS
+Create "Spring Starter Project"
+Name DemoWeb-1
+	Add Spring Web Module
+	Add Thymeleaf
+	Add PostgreSQL Driver (install Postgresql, create db)
+	Add Spring DataMongoDB (install mongodb, run mongod)
+	Add Devtool	
+Create next project structure
+src/main/java
+	com.example.model
+		Customer.java	@Document(collection = "customer") @Id  @GeneratedValue @Column
+		Product.java    @Entity @Id  @Column
+	com.example.repository
+		ICostumerRepo.java - extends MongoRepository
+		IProductRepo.java  - extends JpaRepository		
+	com.example.controller
+		CustomerController.java - @RestController @RequestMapping @Autowired @RequestBody
+			addNewCustomer() - @PostMapping
+			getAllCustomers()- @GetMapping
+		ProductController.java  - @Controller @ResponseBody(opcional) @RequestMapping    @Autowired  
+			addNewProduct()   @RequestMapping post
+			getAllProducts()  @RequestMapping  get
+src/main/resources
+	templates
+		customer.html
+		products.html
+		index.html
+		
+		
+
+server.port=4041
+
+		
+#Local MongoDB config 
+spring.data.mongodb.database=customer_db
+spring.data.mongodb.port=27017
+spring.data.mongodb.host=localhost
+
+#postgres
+spring.jpa.database=POSTGRESQL
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost/demo
+spring.datasource.username=postgres
+spring.datasource.password=123
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+	
+
+
+https://www.gitignore.io/
